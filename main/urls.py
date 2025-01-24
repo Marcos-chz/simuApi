@@ -21,7 +21,7 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('fake_api.urls')),  # Ruta de tu API principal
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),  # Ruta de Swagger
+    path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),  # Ruta de Swagger
 ]
 
 # Configuración para servir archivos estáticos y de medios en modo de desarrollo

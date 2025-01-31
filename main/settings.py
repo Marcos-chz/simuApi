@@ -4,6 +4,9 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+PUBLIC_API_TOKEN = "6f242ca32f927e02734e569fc6bb032da5fb0165"
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -30,7 +33,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'fake_api',
     'rest_framework',
-    'drf_yasg'
+    'drf_yasg',
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
@@ -71,9 +75,10 @@ WSGI_APPLICATION = 'main.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',  # Usar un archivo de base de datos SQLite en el directorio BASE_DIR
+        'NAME': BASE_DIR / 'db.sqlite3',  # BD defalut
     }
 }
+
 
 
 # Password validation
@@ -125,3 +130,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'  # URL base para acceder a los archivos
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Directorio donde se guardarán los archivos subidos
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',  # Permite acceso sin autenticación
+    ],
+}
